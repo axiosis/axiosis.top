@@ -2,4 +2,4 @@ header { padding-top: 80px; }
 main   { padding-top: 80px;  }
 .pdf   { margin-bottom:-2px; margin-left:37px; width:20pt; padding-right: 10px; content:url(pdf.jpg);  }
 .num   { width: 30px; display: inline-block; }
-p a { line-height: 2.0; }
+p a { line-height: 1.0; }
