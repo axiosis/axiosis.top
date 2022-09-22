@@ -1,0 +1,3 @@
+header { padding-top: 80px; }
+main   { padding-top: 80px; }
+.pdf   { margin-bottom:-2px; height:36px; padding-right: 10px; content:url(pdf.jpg);  }
