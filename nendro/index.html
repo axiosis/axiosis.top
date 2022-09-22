@@ -8,8 +8,51 @@
     <title>☸</title>
     <link rel="stylesheet" href="https://n2o.dev/blank.css" />
     <link rel="stylesheet" href="../journal.css?v=3" />
+<script>
+var audio;
+var playlist;
+var tracks;
+var current;
+
+ function init(){
+    current = 0;
+    audio = $('audio');
+    playlist = $('#playlist');
+    tracks = playlist.find('li b a');
+    len = tracks.length - 1;
+    audio[0].volume = .10;
+    playlist.find('a').click(function(e){
+        e.preventDefault();
+        link = $(this);
+        current = link.parent().index();
+        run(link, audio[0]);
+    });
+    audio[0].addEventListener('ended',function(e){
+        current++;
+        if(current == len){
+            current = 0;
+            link = playlist.find('a')[0];
+        }else{
+            link = playlist.find('a')[current];
+        }
+        run($(link),audio[0]);
+    });
+ }
+
+ function run(link, player){
+    $('.active').removeClass();
+        player.src = link.attr('href');
+        par = link.parent();
+        par.addClass('active');
+        audio[0].load();
+        audio[0].play();
+ }
+
+ function play(element) { document.getElementById("player").src = element.href; return false; }
 </head>
-<body>
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+<body onload='init()'>
 <nav>
   <a href='https://axiosis.top/'>Видавництво</a>
   <a href='https://axiosis.top/azov/'>☸</a>
@@ -25,14 +68,21 @@
            Редактор: Намкхай Лхамо</p>
         <h3>Офіційне видання</h3>
         <p><img class="pdf"> 978-1-62540-054-3 <a href="https://longchenpa.guru/gter.ma/snying.thig.rtsa.pod/texts/sngon.'gro/index.htm"> М.Сохацький. Лонгчен Нінгтік Ньондро. 2022. </a> </p>
-        <h3>Про автора</h3>
-        <p>Максим Сохацький, доктор філософії КПІ (ЄДРПОУ 02070921),
-           буддистський піп-капелан лінії передачі Лонгчен Нінгтік
-           тибетського буддизму (ЄДРПОУ 38778275). Провідний інженер-програміст
-           ДП «ІНФОТЕХ» (ЄДРПОУ 34239034) у підпорядкуванні МВС України (ЄДРПОУ 00032684).
-           Автор <a href="https://deposits.privatbank.ua/static/doc/index.htm">«Депозитів ПриватБанк»</a>
-           та <a href="https://crm.erp.uno">«МІА: Документообіг»</a> побудованих на авторських творах <a href="https://erp.uno">ERP.UNO</a>
-           та <a href="https://n2o.dev">N2O.DEV</a>.
+        <h3>Музичний супровід</h3>
+        <p>
+        <audio id=player preload=auto autoplay=true controls=controls style="width:250px;">
+        <ul id=playlist>
+            <li><b><a href="https://tonpa.guru/nendro/1. 8 Auspicious.mp3">1. 8 Auspicious</a></b></li>
+            <li><b><a href="https://tonpa.guru/nendro/2. Take Refuge.mp3">2. Take Refuge</a></b></li>
+            <li><b><a href="https://tonpa.guru/nendro/3. Vajrasattva.mp3">3. Vajrasattva Mantra</a></b></li>
+            <li><b><a href="https://tonpa.guru/nendro/4. Manjushri.mp3">4. Manjushri Calling</a></b></li>
+            <li><b><a href="https://tonpa.guru/nendro/5. Mandala.mp3">5. Mandala Offering</a></b></li>
+            <li><b><a href="https://tonpa.guru/nendro/6. Chod.mp3">6. Chod</a></b></li>
+            <li><b><a href="https://tonpa.guru/nendro/7. Guru Rinpoche.mp3">7. Guru Yoga</a></b></li>
+            <li><b><a href="https://tonpa.guru/nendro/8. Kunzan Monlam.mp3">8. Kunzan Monlam</a></b></li>
+            <li><b><a href="https://tonpa.guru/nendro/A. Dechen Monlam.mp3">9. Dechen Monlam</a></b></li>
+            <li><b><a href="https://tonpa.guru/nendro/9. Leymon Tendrel.mp3">10. Leymon Tendrel</a></b></li>
+        </ul>
         </p>
         <p><img class="pdf"> 978-1-62540-054-3 <a href="https://longchenpa.guru/gter.ma/snying.thig.rtsa.pod/texts/sngon.'gro/index.pdf"> Додрубчен. Лонгчен Нінгтік Ньондро. 2022. </a> </p>
 
