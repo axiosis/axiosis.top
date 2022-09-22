@@ -1,5 +1,5 @@
 header { padding-top: 80px; }
 main   { padding-top: 80px;  }
-.pdf   { margin-bottom:-2px; margin-left:37px; height:18px; padding-right: 10px; content:url(pdf.jpg);  }
+.pdf   { margin-bottom:-2px; margin-left:37px; max-height:18px; padding-right: 10px; content:url(pdf.jpg);  }
 .num   { width: 30px; display: inline-block; }
 a { line-height: 2.0; }
