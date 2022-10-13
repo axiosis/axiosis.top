@@ -1,0 +1,85 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Ідея Нації ꑭ" />
+    <meta name="author" content="Максим Сохацький" />
+    <title>☸</title>
+    <link rel="stylesheet" href="https://n2o.dev/blank.css" />
+    <link rel="stylesheet" href="../journal.css" />
+<script>
+var audio;
+var playlist;
+var tracks;
+var current;
+
+ function init(){
+    current = 0;
+    audio = $('audio');
+    playlist = $('#playlist');
+    tracks = playlist.find('li b a');
+    len = tracks.length - 1;
+    audio[0].volume = .10;
+    playlist.find('a').click(function(e){
+        e.preventDefault();
+        link = $(this);
+        current = link.parent().index();
+        run(link, audio[0]);
+    });
+    audio[0].addEventListener('ended',function(e){
+        current++;
+        if(current == len){
+            current = 0;
+            link = playlist.find('a')[0];
+        }else{
+            link = playlist.find('a')[current];
+        }
+        run($(link),audio[0]);
+    });
+ }
+
+ function run(link, player){
+    $('.active').removeClass();
+        player.src = link.attr('href');
+        par = link.parent();
+        par.addClass('active');
+        audio[0].load();
+        audio[0].play();
+ }
+
+ function play(element) { document.getElementById("player").src = element.href; return false; }
+</head>
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+<body onload='init()'>
+<nav>
+  <a href='https://axiosis.top/'>Видавництво</a>
+  <a href='https://axiosis.top/azov/'>☸</a>
+</nav>
+<header>
+     <a href="https://github.com/axiosis/books/tree/main/monk"><img src="https://avatars.githubusercontent.com/u/103136912?s=400&u=353e0efb01ad6b6a78d0355fe2550359477dfc98&v=4"></a><h1>☸</h1>
+</header>
+<main>
+    <section>
+        <h3>Безумний монах</h3>
+        <p>
+           УДК 13<br>
+           УДК 821.161.2<br>
+        </p>
+        <p>Автор: Чо Дха<br>
+        </p>
+        <h3>Офіційне видання</h3>
+        <p><img class="pdf"> 978-617-8027-08-7 <a href="https://axiosis.github.io/books/monk/texts/monk.pdf"> Чо Дха. Безумний Монах. 2022. </a> </p>
+
+        <h3>Видавництво «Αξίωσις»</h3>
+
+        <p> Видавництво спеціалізується на наукових дослідженнях, формальних системах,
+            аксіоматичних системах, програмному забезпеченні, математиці, філософії,
+            літературі, мистецтву. Сайт видавництва &mdash; <a href="https://axiosis.top">axiosis.top</a></p>
+
+    </section>
+</main>
+<footer>Namdak Tönpa <span class="heart">&nbsp;❤&nbsp;</span> 1980—2022</footer>
+</body>
+</html>
